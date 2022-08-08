@@ -33,8 +33,15 @@ const ItemCount = styled.span`
 
 
 
-const CartIcon = () => {
-    const{isCartOpen,setIsCartOpen} = useContext(CartContext);
+const CartIcon = ({quantity}) => {
+    const{cartItems,isCartOpen,setIsCartOpen} = useContext(CartContext);
+
+    const cartItemQuantity = () => {
+        cartItems.map((i,quantity) => {
+            return i.quantity
+        })
+    }
+    console.log(cartItemQuantity)
 
     const toggleIsCartOpen = () => setIsCartOpen(!isCartOpen)
     return(
@@ -42,7 +49,7 @@ const CartIcon = () => {
             <Icon>
                     <ShoppingCartOutlined style={{fontSize:'30px'}}/>
             </Icon>
-            <ItemCount>1</ItemCount>
+            <ItemCount>{}</ItemCount>
         </Container>
     )
 }

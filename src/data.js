@@ -117,37 +117,37 @@ export const sliderItems = [
 
   export const jackets = [
     {
-      id:1,
+      id:7,
       name:"Warm Jacket",
       img:"https://i.postimg.cc/tCqVkmZ3/01-warm-jacket-mustard.jpg",
       price:46
     },
     {
-      id:2,
+      id:8,
       name:"Bomber",
       img:"https://i.postimg.cc/fLsbLJYc/02-bomber-black.jpg",
       price:59
     },
     {
-      id:3,
+      id:9,
       name:"Rider",
       img:"https://i.postimg.cc/259Dpy2j/03-rider-black.jpg",
       price:79
     },
     {
-      id:4,
+      id:10,
       name:"Demin",
       img:"https://i.postimg.cc/YqLB5tWM/04-demin-blue.jpg",
       price:89
     },
     {
-      id:5,
+      id:11,
       name:"Varsity",
       img:"https://i.postimg.cc/FHmm32Yv/05-varsity-black.jpg",
       price:29
     },
     {
-      id:6,
+      id:12,
       name:"Symbiote",
       img:"https://i.postimg.cc/FFjjDLP4/06-symbiote-neon.jpg",
       price:69
@@ -156,37 +156,37 @@ export const sliderItems = [
 
   export const shirts = [
     {
-      id:1,
+      id:13,
       name:"Dennis",
       img:"https://i.postimg.cc/0QJ2c7P1/01-dennis-black.jpg",
       price:19
     },
     {
-      id:2,
+      id:14,
       name:"Casual",
       img:"https://i.postimg.cc/tgsX4F1n/02-casual-black.jpg",
       price:21
     },
     {
-      id:3,
+      id:15,
       name:"Slim",
       img:"https://i.postimg.cc/L5pRD7xj/03-slim-fit-blue.jpg",
       price:45
     },
     {
-      id:4,
+      id:16,
       name:"Checkered",
       img:"https://i.postimg.cc/Hx1f1Mbg/04-checkered-blue.jpg",
       price:56
     },
     {
-      id:5,
+      id:17,
       name:"Cotton Blend",
       img:"https://i.postimg.cc/W3SJcMxF/05-cotton-blend-white.jpg",
       price:25
     },
     {
-      id:6,
+      id:18,
       name:"Beach",
       img:"https://i.postimg.cc/LX4nDJhH/06-beach-green-purple.jpg",
       price:65
@@ -195,37 +195,37 @@ export const sliderItems = [
 
   export const jeans = [
     {
-      id:1,
+      id:19,
       name:"Levi",
       img:"https://i.postimg.cc/QxYkTr49/01-levi-trackpants.jpg",
       price:56
     },
     {
-      id:2,
+      id:20,
       name:"Van Heusen",
       img:"https://i.postimg.cc/Vk3qKWcz/02-vanheusen-jeans.jpg",
       price:23
     },
     {
-      id:3,
+      id:21,
       name:"Martin",
       img:"https://i.postimg.cc/xCQK2jC7/03-martin-jeans.jpg",
       price:44
     },
     {
-      id:4,
+      id:22,
       name:"Blend You",
       img:"https://i.postimg.cc/9MByF3wf/04-blend-light-blue.jpg",
       price:66
     },
     {
-      id:5,
+      id:23,
       name:"Aka Chic",
       img:"https://i.postimg.cc/nrR7Bvkb/05-aka-chic-navy.jpg",
       price:96
     },
     {
-      id:6,
+      id:24,
       name:"Ben",
       img:"https://i.postimg.cc/nr0KT8nW/06-ben-white.jpg",
       price:54
@@ -234,37 +234,37 @@ export const sliderItems = [
 
   export const shoes = [
     {
-      id:1,
+      id:25,
       name:"Puma",
       img:"https://i.postimg.cc/1tYwNGMx/01-puma-black.jpg",
       price:88
     },
     {
-      id:2,
+      id:26,
       name:"Off Running",
       img:"https://i.postimg.cc/wBwWxbyg/02-running-black.jpg",
       price:67
     },
     {
-      id:3,
+      id:27,
       name:"Tesla",
       img:"https://i.postimg.cc/vZLqkmG1/03-tesla-blue.jpg",
       price:25
     },
     {
-      id:4,
+      id:28,
       name:"Campus",
       img:"https://i.postimg.cc/xC7tMJ3Z/04-campus-black.jpg",
       price:78
     },
     {
-      id:5,
+      id:29,
       name:"Asian",
       img:"https://i.postimg.cc/6qmctsFv/05-asian-white.jpg",
       price:66
     },
     {
-      id:6,
+      id:30,
       name:"Nova",
       img:"https://i.postimg.cc/JhLq15YP/06-nova-green.jpg",
       price:45

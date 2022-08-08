@@ -106,7 +106,6 @@ const Navbar = () => {
     } 
     const { currentUser } = useContext(UserContext);
 
-
         return (
         <Fragment>
         <Container>
@@ -141,7 +140,7 @@ const Navbar = () => {
                     }
                     </div>
                     <MenuItem>
-                            <CartIcon/>
+                            <CartIcon />
                     </MenuItem>
                     {isCartOpen && <CartDropDown/>}
                 </Right>

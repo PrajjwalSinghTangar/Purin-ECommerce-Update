@@ -1,5 +1,7 @@
 import { ShoppingCartOutlined } from "@ant-design/icons";
+import { useContext } from "react";
 import styled from "styled-components";
+import { CartContext } from "../contexts/cart.context";
 
 const Info = styled.div`
     opacity:0;
@@ -72,15 +74,17 @@ const Title = styled.h3`
     font-size:130%;
 `;
 
-const Product = ({img,name,price}) => {
-
+const Product = ({id,img,name,price}) => {
+    const {addItemToCart } = useContext(CartContext)
+    const addProductToCart = () => addItemToCart({id,img,name,price})
+    
     return(
         <Container>
             <Circle/>
             <Image src={img}/>
             <Info>
                 <Icon>
-                    <ShoppingCartOutlined />
+                    <ShoppingCartOutlined onClick={addProductToCart}/>
                 </Icon>
                 <Title>
                     <div>{name}</div>

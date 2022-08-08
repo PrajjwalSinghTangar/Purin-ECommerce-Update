@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import CartItem from "./CartItem";
+import { CartContext } from "../contexts/cart.context";
+import { useContext } from "react";
 
 const Container = styled.div`
     position: absolute;
@@ -44,10 +47,15 @@ const Button = styled.button`
 `;
 
 const CartDropDown = () => {
+    const { cartItems } = useContext(CartContext);
     return(
         <Container>
             <CartItems>
-
+                {
+                    cartItems.map((item) => (
+                    <CartItem cartItem={item} key={item.id}/>
+                    ))
+                }
             </CartItems>
             <Button>
                 GO TO CHECKOUT

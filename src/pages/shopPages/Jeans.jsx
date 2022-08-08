@@ -40,7 +40,7 @@ const Jeans = () => {
             <ProductCategoryList>
                 {
                     jeans.map((item) => (
-                        <Product img={item.img} key={item.id} name={item.name} price={item.price}/> 
+                        <Product img={item.img} key={item.id} name={item.name} price={item.price} id={item.id}/> 
                     ))
                 }
             </ProductCategoryList>
