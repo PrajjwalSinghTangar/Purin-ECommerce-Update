@@ -1,6 +1,4 @@
-import { HeartOutlined,SearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
-import { click } from "@testing-library/user-event/dist/click";
-import { useState } from "react";
+import { SearchOutlined} from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -18,7 +16,10 @@ const Info = styled.div`
     justify-content: center;
     transition: all 0.5s ease;
     cursor: pointer;
+    display:flex;
+    flex-direction: column;
 `;
+
 
 const Container = styled.div`
     flex:1;
@@ -63,37 +64,36 @@ const Icon = styled.div`
     margin: 10px;
     transition: all 0.5s ease;
 
-
     &:hover{
         background-color: white;
         transform: scale(1.1);
     };
 `;
 
-const Title = styled.h3`
+const Title = styled.h1`
     color:white;
-    font-size:130%;
 `;
 
-const Product = ({img,name,price}) => {
 
+const HomePageProduct = ({title,img,route}) => {
     return(
         <Container>
             <Circle/>
-            <Image src={img}/>
+            <Image src={img.img}/>
+            
+                <Link to={route}>
             <Info>
                 <Icon>
-                    <ShoppingCartOutlined />
+                    <SearchOutlined />
                 </Icon>
                 <Title>
-                    <div>{name}</div>
-                    <div>{'$'+ price}</div>
-                </Title>            
+                    {title}
+                </Title>
             </Info>
-            
+                </Link>
             
         </Container>
     );
 };
 
-export default Product;
+export default HomePageProduct;

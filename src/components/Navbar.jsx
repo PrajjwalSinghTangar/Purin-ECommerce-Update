@@ -3,11 +3,14 @@ import { Link, Outlet } from "react-router-dom";
 
 import styled from 'styled-components';
 import { Badge } from "antd";
-import { SearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { SearchOutlined} from "@ant-design/icons";
 import { mobile, tablet } from "../responsive";
+import CartIcon from '../components/CartIcon';
+import CartDropDown from "./CartDropDown";
 
 import { UserContext } from "../contexts/user.context";
 import { signOutUser } from "../utils/firebase/firebase.utils";
+import { CartContext } from "../contexts/cart.context";
 
 //Styling With Styled Components
 const Container = styled.div`
@@ -96,12 +99,14 @@ const CustomMenuItem = () => {
     );
   };
 
-const Navbar = () => {   
+const Navbar = () => {
+    const { isCartOpen } = useContext(CartContext);
     const [setShow] = useState();
     const toggleHandle = {
         setShow
     } 
     const { currentUser } = useContext(UserContext);
+
 
         return (
         <Fragment>
@@ -137,10 +142,9 @@ const Navbar = () => {
                     }
                     </div>
                     <MenuItem>
-                        <Badge count="4" color="primary">
-                            <ShoppingCartOutlined />
-                        </Badge>
+                            <CartIcon/>
                     </MenuItem>
+                    {isCartOpen && <CartDropDown/>}
                 </Right>
             </Wrapper>
             <Outlet/>

@@ -58,6 +58,11 @@ const Button = styled.button`
     background-color:teal;
     color:white;
     cursor: pointer;
+    &:hover{
+        background-Color: white;
+        border:  teal solid;
+        color:teal;
+    }
 `;
 
 const defaultFormFields = {

@@ -59,6 +59,11 @@ const Button = styled.button`
     color:white;
     cursor: pointer;
     margin-bottom:5px;
+    &:hover{
+        background-Color: white;
+        border:  teal solid;
+        color:teal;
+    }
 `;
 
 
