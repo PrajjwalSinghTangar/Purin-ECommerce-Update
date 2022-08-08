@@ -1,5 +1,4 @@
 import React from "react";
-import { useContext } from "react";
 import Announcement from "../components/Announcement.jsx";
 import Catergories from "../components/Categories.jsx";
 import Slider from "../components/Slider.jsx";

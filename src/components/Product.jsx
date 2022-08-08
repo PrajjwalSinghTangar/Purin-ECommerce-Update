@@ -1,7 +1,4 @@
-import { HeartOutlined,SearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
-import { click } from "@testing-library/user-event/dist/click";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 
 const Info = styled.div`

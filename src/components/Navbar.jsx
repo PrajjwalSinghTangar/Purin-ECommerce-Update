@@ -2,7 +2,6 @@ import { Fragment, useContext, useState } from "react";       //REACT
 import { Link, Outlet } from "react-router-dom";
 
 import styled from 'styled-components';
-import { Badge } from "antd";
 import { SearchOutlined} from "@ant-design/icons";
 import { mobile, tablet } from "../responsive";
 import CartIcon from '../components/CartIcon';
