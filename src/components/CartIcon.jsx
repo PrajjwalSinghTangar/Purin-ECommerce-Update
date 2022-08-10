@@ -33,15 +33,9 @@ const ItemCount = styled.span`
 
 
 
-const CartIcon = ({quantity}) => {
-    const{cartItems,isCartOpen,setIsCartOpen} = useContext(CartContext);
+const CartIcon = () => {
+    const{isCartOpen,setIsCartOpen} = useContext(CartContext);
 
-    const cartItemQuantity = () => {
-        cartItems.map((i,quantity) => {
-            return i.quantity
-        })
-    }
-    console.log(cartItemQuantity)
 
     const toggleIsCartOpen = () => setIsCartOpen(!isCartOpen)
     return(
