@@ -83,8 +83,8 @@ const Product = ({id,img,name,price}) => {
             <Circle/>
             <Image src={img}/>
             <Info>
-                <Icon>
-                    <ShoppingCartOutlined onClick={addProductToCart}/>
+                <Icon onClick={addProductToCart}>
+                    <ShoppingCartOutlined />
                 </Icon>
                 <Title>
                     <div>{name}</div>

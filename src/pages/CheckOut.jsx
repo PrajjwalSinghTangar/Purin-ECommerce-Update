@@ -1,8 +1,11 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 import { mobile,tablet } from "../responsive";
+import { useContext } from "react";
+import { CartContext } from "../contexts/cart.context";
 
 const Container = styled.div`
 
@@ -10,6 +13,9 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
     padding: 20px;
+    display: flex;
+    align-items:center; 
+    flex-direction:column;
     ${mobile({padding: "10px"})}
     ${tablet({padding: "15px"})}
 `;
@@ -24,6 +30,9 @@ const Top = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 20px;
+    width:70vw;
+    ${mobile({width: "90vw"})}
+    ${tablet({width: "90vw"})}
 `;
 
 const TopButton = styled.button`
@@ -49,8 +58,10 @@ const TopText = styled.span`
 const Bottom = styled.div`
     display: flex;
     justify-content: center;
-    ${mobile({flexDirection: "column"})}
-    ${tablet({flexDirection: "column"})}
+    flex-direction:column;
+    width:70vw;
+    ${mobile({flexDirection: "column",width:'90vw'})}
+    ${tablet({flexDirection: "column",width:'90vw'})}
 `;
 
 const Info = styled.div`
@@ -154,93 +165,118 @@ const SummaryItemText = styled.span`
 `;
 
 const SummaryItemPrice = styled.span`
-
+    text-align:right;
 `;
 
 const Button = styled.button`
-    width: 100%;
+    width:${props=> props.short ? "50%" : "100%"};
     padding: 10px;
     background-color:black;
     color:white;
+    margin-top:10px;
+
 `;
 
-const Cart = ({currentUser}) => {
+const CheckOut = () => {
+    const {cartItems,cartCount,addItemToCart,removeItemFromCart} = useContext(CartContext);
+    
+    const totalSum = (cartItems.map((items) => (
+        items.price*items.quantity
+    ))).reduce((pSum , a) => pSum + a, 0)
+
+    const discount = () => { if(totalSum > 50) {
+        return(
+            "$5.90 off! Yay!" 
+        )
+      }else{return(<div>
+        {`Add $ ${50-totalSum} worth items and save on delivery!`}
+      </div>)}}
+    const discountOff = () => { if(totalSum > 50) {
+        return(
+            "-5.90!"
+        )
+      }else{return(<div>
+        {`$5.90`}
+      </div>)}}
+    const grandSum = () => {
+        if(totalSum > 50 ){
+            return totalSum
+        } if( totalSum === 0) {
+            return totalSum
+        }else{
+            return totalSum+5
+        }
+    }
+    //console.log(cartItems);
     return (
         <Container>
             <Announcement/>
             <Wrapper>
                 <Title>YOUR BAG</Title>
                 <Top>
-                    <TopButton>CONTINUE SHOPPING</TopButton>
+                    <TopButton><Link to="/">CONTINUE SHOPPING</Link></TopButton>
                     <TopTexts>
-                        <TopText>Shopping Bag (2)</TopText>
-                        <TopText>Your Wishlist (0)</TopText>
+                        <TopText>Shopping Bag ({cartCount})</TopText>
                     </TopTexts>
                     <TopButton type="filled">CHECKOUT NOW</TopButton>
                 </Top>
                 <Bottom>
                     <Info>
-                        <Product>
-                            <ProductDetails>
-                                <Image src="https://i.postimg.cc/3xwwNxHQ/nike-black.jpg"/>
-                                <Details>
-                                    <ProductName><b>Product:</b> Unisex Floral</ProductName>
-                                    <ProductId><b>ID:</b>7836383</ProductId>
-                                    <ProductColor color="black"/>
-                                    <ProductSize><b>Size:</b>36</ProductSize>
-                                </Details>
-                            </ProductDetails>
-                            <PriceDetails>
-                                <ProductAmountContainer>
-                                    <PlusOutlined/>
-                                    <ProductAmount>2</ProductAmount>
-                                    <MinusOutlined/>
-                                </ProductAmountContainer>
-                                <ProductPrice>
-                                    $30
-                                </ProductPrice>
-                            </PriceDetails>
-                        </Product>
-                        <Hr/>
-                        <Product>
-                            <ProductDetails>
-                                <Image src="https://i.postimg.cc/Fztd8d1Q/61x-a-Gxc-O-L-UX679.jpg"/>
-                                <Details>
-                                    <ProductName><b>Product:</b> Unisex Floral</ProductName>
-                                    <ProductId><b>ID:</b>7836383</ProductId>
-                                    <ProductColor color="grey"/>
-                                    <ProductSize><b>Size:</b>M</ProductSize>
-                                </Details>
-                            </ProductDetails>
-                            <PriceDetails>
-                                <ProductAmountContainer>
-                                    <PlusOutlined/>
-                                    <ProductAmount>1</ProductAmount>
-                                    <MinusOutlined/>
-                                </ProductAmountContainer>
-                                <ProductPrice>
-                                    $55
-                                </ProductPrice>
-                            </PriceDetails>
-                        </Product>
+                        {
+                            totalSum 
+                            ?
+                            (cartItems.map((items)=>{
+                                const {id,img, name, price,quantity} = items
+                                return(
+                                    <div key={id}>
+                                        <Product>
+                                            <ProductDetails>
+                                                <Image src={img} />
+                                                <Details>
+                                                    <ProductName><b>Product:</b> {name}</ProductName>
+                                                    <ProductId><b>ID:</b>{id}</ProductId>
+                                                    <ProductColor color="black"/>
+                                                    <ProductSize><b>Size:</b>36</ProductSize>
+                                                </Details>
+                                            </ProductDetails>
+                                            <PriceDetails>
+                                                <ProductAmountContainer>
+                                                    <PlusOutlined onClick={()=>addItemToCart(items)}/>
+                                                    <ProductAmount>{" "+quantity+" "}</ProductAmount>
+                                                    <MinusOutlined onClick={()=>removeItemFromCart(items)}/>
+                                                </ProductAmountContainer>
+                                                <ProductPrice>
+                                                    {"$"+price}
+                                                </ProductPrice>
+                                                <Button short>
+                                                    Remove Item
+                                                </Button>
+                                            </PriceDetails>
+                                        </Product>
+                                        <Hr/>
+                                    </div>
+                                )
+                            }))
+                            : (<Title><b>"You Have No Items"</b></Title>)
+                        } 
                     </Info>
                     <Summary>
                         <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                         <SummaryItem>
                             <SummaryItemText>Subtotal</SummaryItemText>
-                            <SummaryItemPrice>$85</SummaryItemPrice>
+                            <SummaryItemPrice> {"$"+totalSum} </SummaryItemPrice>
                         </SummaryItem>
                         <SummaryItem>
                             <SummaryItemText>Estimated Shipping</SummaryItemText>
-                            <SummaryItemPrice>$5.90</SummaryItemPrice>
+                            <SummaryItemPrice>{discount()}</SummaryItemPrice>
                         </SummaryItem>
                         <SummaryItem>
                             <SummaryItemText>Shipping Discount</SummaryItemText>
-                            <SummaryItemPrice>-$5.90</SummaryItemPrice>
+                            <SummaryItemPrice>{discountOff()}</SummaryItemPrice>
                         </SummaryItem>
                         <SummaryItem type="total">
                             <SummaryItemText>Total</SummaryItemText>
-                            <SummaryItemPrice>$85</SummaryItemPrice>
+                            <SummaryItemPrice> {"$"+grandSum()}</SummaryItemPrice>
                         </SummaryItem>
                         <Button> CHECKOUT NOW</Button>
                     </Summary>
@@ -251,4 +287,4 @@ const Cart = ({currentUser}) => {
     );
 };
 
-export default Cart;
+export default CheckOut;

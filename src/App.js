@@ -9,7 +9,7 @@ import Home from './pages/Home';
 import Product from './pages/Product';
 import Register from './pages/Register';
 import Login from './pages/Login.jsx';
-import Cart from './pages/Cart';
+import CheckOut from './pages/CheckOut';
 import Hats from './pages/shopPages/Hats';
 import Jackets from './pages/shopPages/Jackets';
 import Shirts from './pages/shopPages/Shirts'
@@ -35,7 +35,7 @@ const App = () => {
                 <Route path='/shoes' element={<Shoes/>} />
                 <Route path='/jeans' element={<Jeans/>} />
                 <Route path='/product' element={<Product/>} /> 
-                <Route path='/cart' element={<Cart/>} />
+                <Route path='/checkout' element={<CheckOut/>} />
                 <Route path='/login' element={ currentUser ? (<Navigate to="/"/> ): (<Login/>) }/>
                 <Route path='/register' element={ currentUser ? (<Navigate to="/"/> ): (<Register/>) } />
             </Routes>

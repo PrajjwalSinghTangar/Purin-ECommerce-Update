@@ -4,7 +4,6 @@ const Container = styled.div`
     margin:5px;
     display: flex;
     align-items:center;
-
 `;
 
 const Title = styled.h2`
@@ -16,8 +15,10 @@ const Quantity = styled.span`
 `;
 
 const Info = styled.div`
-
+    margin-left:15px;
 `;
+
+
 
 const Image = styled.img`
     max-height:50px;
@@ -31,9 +32,7 @@ const Calc = styled.div`
 const ItemPrice = styled.span`
 
 `;
-const Total = styled.span`
 
-`;
 
 const CartItem = ({cartItem}) => {
     const {name,quantity,img,price} = cartItem;
@@ -41,12 +40,15 @@ const CartItem = ({cartItem}) => {
         <Container>
             <Image src={img}/>
             <Info>
-            <Title>{name}</Title>
-            <Calc>
-            <Quantity>{quantity}</Quantity>
-            <ItemPrice>{" x $"+price}</ItemPrice>
-            <Total>{` (${quantity*price})`}</Total>
-            </Calc>
+                <Title>{name}</Title>
+                <Calc>
+                    <Quantity>
+                        {quantity}
+                    </Quantity>
+                    <ItemPrice>
+                        {" x $"+price}
+                    </ItemPrice>
+                </Calc>
             </Info>
         </Container>
     )

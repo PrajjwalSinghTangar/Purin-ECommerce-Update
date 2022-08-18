@@ -2,11 +2,13 @@ import styled from "styled-components";
 import CartItem from "./CartItem";
 import { CartContext } from "../contexts/cart.context";
 import { useContext } from "react";
+import {useNavigate} from 'react-router-dom';
 
 const Container = styled.div`
     position: absolute;
     width: 240px;
-    height: 340px;
+    height: fit-content;
+    max-height:340px;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -26,7 +28,7 @@ const CartItems = styled.div`
     height: 240px;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow: auto;
 `;
 
 const Button = styled.button`
@@ -38,16 +40,23 @@ const Button = styled.button`
     cursor: pointer;
     margin-top: auto;
     margin-bottom:5px;
+    a{color:white};
 
     &:hover{
         background-Color: white;
         border:  teal solid;
         color:teal;
+        a{color:teal};
     }
 `;
 
 const CartDropDown = () => {
-    const { cartItems } = useContext(CartContext);
+    const { cartItems,isCartOpen,setIsCartOpen } = useContext(CartContext);
+    const toggleIsCartOpen = () => setIsCartOpen(!isCartOpen)
+    const navigate = useNavigate();
+    const goToCheckoutHander = () => {
+        navigate('/checkout')
+    }
     return(
         <Container>
             <CartItems>
@@ -57,9 +66,9 @@ const CartDropDown = () => {
                     ))
                 }
             </CartItems>
-            <Button>
-                GO TO CHECKOUT
-            </Button>
+                    <Button onClick={function(){toggleIsCartOpen();goToCheckoutHander();}}>
+                    GO TO CHECKOUT
+                    </Button>
         </Container>
     )
 }
