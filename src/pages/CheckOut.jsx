@@ -174,24 +174,21 @@ const Button = styled.button`
     background-color:black;
     color:white;
     margin-top:10px;
-
+    cursor:pointer;
 `;
 
 const CheckOut = () => {
-    const {cartItems,cartCount,addItemToCart,removeItemFromCart} = useContext(CartContext);
+    const {cartItems,cartCount,addItemToCart,removeItemFromCart, clearItemFromCart,cartTotal} = useContext(CartContext);
     
-    const totalSum = (cartItems.map((items) => (
-        items.price*items.quantity
-    ))).reduce((pSum , a) => pSum + a, 0)
 
-    const discount = () => { if(totalSum > 50) {
+    const discount = () => { if(cartTotal > 50) {
         return(
             "$5.90 off! Yay!" 
         )
       }else{return(<div>
-        {`Add $ ${50-totalSum} worth items and save on delivery!`}
+        {`Add $ ${50-cartTotal} worth items and save on delivery!`}
       </div>)}}
-    const discountOff = () => { if(totalSum > 50) {
+    const discountOff = () => { if(cartTotal > 50) {
         return(
             "-5.90!"
         )
@@ -199,12 +196,12 @@ const CheckOut = () => {
         {`$5.90`}
       </div>)}}
     const grandSum = () => {
-        if(totalSum > 50 ){
-            return totalSum
-        } if( totalSum === 0) {
-            return totalSum
+        if(cartTotal > 50 ){
+            return cartTotal
+        } if( cartTotal === 0) {
+            return cartTotal
         }else{
-            return totalSum+5
+            return cartTotal+5
         }
     }
     //console.log(cartItems);
@@ -223,7 +220,7 @@ const CheckOut = () => {
                 <Bottom>
                     <Info>
                         {
-                            totalSum 
+                            cartTotal 
                             ?
                             (cartItems.map((items)=>{
                                 const {id,img, name, price,quantity} = items
@@ -248,7 +245,7 @@ const CheckOut = () => {
                                                 <ProductPrice>
                                                     {"$"+price}
                                                 </ProductPrice>
-                                                <Button short>
+                                                <Button short onClick={() => clearItemFromCart(items)}>
                                                     Remove Item
                                                 </Button>
                                             </PriceDetails>
@@ -264,7 +261,7 @@ const CheckOut = () => {
                         <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                         <SummaryItem>
                             <SummaryItemText>Subtotal</SummaryItemText>
-                            <SummaryItemPrice> {"$"+totalSum} </SummaryItemPrice>
+                            <SummaryItemPrice> {"$"+cartTotal} </SummaryItemPrice>
                         </SummaryItem>
                         <SummaryItem>
                             <SummaryItemText>Estimated Shipping</SummaryItemText>
