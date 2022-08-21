@@ -2,8 +2,10 @@ import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
-import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 import { mobile,tablet } from "../responsive";
+import { useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../contexts/cart.context";
 
 const Container = styled.div`
 
@@ -78,7 +80,7 @@ const FilterColor = styled.div`
     background-color: ${props=> props.color};
     margin: 0px 5px;
     cursor: pointer;
-    
+    border-color: 1px solid black;
 `;
 
 const FilterSize = styled.select`
@@ -108,22 +110,6 @@ const AddContainer = styled.div`
         })}
 `;
 
-const AmountContainer = styled.div`
-    display: flex;
-    align-items:center;
-    font-weight: 700;
-`;
-
-const Amount = styled.span`
-    width: 30px;
-    height: 30px;
-    border-radius:10px;
-    border: 1px solid teal;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0px 5px;
-`;
 
 const Button = styled.button`
     padding: 15px;
@@ -137,23 +123,31 @@ const Button = styled.button`
 `;
 
 const Product = () => {
+    const { addItemToCart } = useContext(CartContext);
+    const location = useLocation();
+
+    const id = location.state.id
+    const img = location.state.img
+    const name = location.state.name
+    const price = location.state.price
+
+    const addProductToCart = () => addItemToCart({id,img,name,price})
+
     return(
         <Container>
             <Announcement/>
             <Wrapper>
                 <ImgContainer>
-                    <Image src="https://i.postimg.cc/vTb9LTD8/Unisex-Florals.png"/>
+                    <Image src={img}/>
                 </ImgContainer>
                 <InfoContainer>
-                    <Title>Unisex Floral</Title>
+                    <Title>{name}</Title>
                     <Desc>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A aspernatur neque commodi ratione quibusdam pariatur facilis enim id iusto, itaque saepe nobis repudiandae nesciunt dolorem, laborum velit! Obcaecati, maxime rem.</Desc>
-                    <Price>$20</Price>
+                    <Price>${price}</Price>
                     <FilterContainer>
                         <Filter>
-                            <FilterTitle>Color</FilterTitle>
-                            <FilterColor color="black"/>
-                            <FilterColor color="darkblue"/>
-                            <FilterColor color="gray"/>
+                            <FilterTitle>Colors: Unavailable</FilterTitle>
+                            <FilterColor color="none"/>
                         </Filter>
                         <Filter>
                             <FilterTitle>Size</FilterTitle>
@@ -167,12 +161,7 @@ const Product = () => {
                         </Filter>
                     </FilterContainer>
                     <AddContainer>
-                        <AmountContainer>
-                            <MinusOutlined />
-                            <Amount>1</Amount>
-                            <PlusOutlined />
-                        </AmountContainer>
-                        <Button>Add to Cart</Button>
+                        <Button onClick={addProductToCart}>Add to Cart</Button>
                     </AddContainer>
                 </InfoContainer>
             </Wrapper>

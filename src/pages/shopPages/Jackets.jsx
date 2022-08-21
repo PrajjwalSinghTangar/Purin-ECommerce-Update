@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { Fragment, useContext } from "react";
 import styled from "styled-components";
 import Announcement from '../../components/Announcement';
 import Product from '../../components/Product';
@@ -31,23 +31,31 @@ const ProductCategoryList = styled.div`
 
 const Jackets = () => {
     const {products} = useContext(ProductsContext)
-    const jackets = products.jackets
-
-
+    
     return(
-        <Container>
+        <Fragment>
+            <Container >
             <Announcement/>
-            <Title>Your Dressing Room</Title>
-            <ProductCategoryList>
-                {
-                    jackets.map((item) => (
-                        <Product img={item.img} key={item.id} name={item.name} price={item.price} id={item.id}/> 
-                    ))
-                }
-            </ProductCategoryList>
+            <Title>Jackets</Title>
+            {
+                Object.keys(products).map(title => {
+                    return <Fragment key={title}>
+                        <ProductCategoryList>
+                                {
+                                    products[title].filter((itemx) => itemx.type === "jacket").map((item) => {
+                                        return <div  key={item.id}>
+                                            <Product img={item.img} name={item.name} price={item.price} id={item.id}/> 
+                                        </div>    
+                                    })
+                                }                                
+                                </ProductCategoryList>
+                    </Fragment>
+                })
+            }        
             <Newsletter/>
             <Footer/>
         </Container>
+        </Fragment>
     );
 };
 

@@ -180,7 +180,7 @@ const Button = styled.button`
 const CheckOut = () => {
     const {cartItems,cartCount,addItemToCart,removeItemFromCart, clearItemFromCart,cartTotal} = useContext(CartContext);
     
-
+    //calc discount
     const discount = () => { if(cartTotal > 50) {
         return(
             "$5.90 off! Yay!" 
@@ -204,7 +204,6 @@ const CheckOut = () => {
             return cartTotal+5
         }
     }
-    //console.log(cartItems);
     return (
         <Container>
             <Announcement/>

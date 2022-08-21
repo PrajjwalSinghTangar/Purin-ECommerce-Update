@@ -20,8 +20,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 
-// use your own config
-// I used env but it's not necessary, just paste the config you get from firebase console
+
 const firebaseConfig = {
   apiKey: "AIzaSyCCN-8lPEVP_xL4W_9xjuUB7nFycTJx3FI",
   authDomain: "purin-ecommerceapi.firebaseapp.com",
@@ -75,6 +74,32 @@ export const getCategoriesAndDocuments = async () => {
   }, {});
 
   return categoryMap;
+};
+
+export const getSliderAndDocuments = async () => {
+  const collectionRef = collection(db, "slider");
+  const q = query(collectionRef);
+
+  const querySnapshot = await getDocs(q);
+  const sliderMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, slide} = docSnapshot.data();
+    acc[title.toLowerCase()] =  (slide);
+    return acc;
+  }, {});
+  return sliderMap;
+};
+
+export const getMaxSlideAndDocuments = async () => {
+  const collectionRef = collection(db, "slider");
+  const q = query(collectionRef);
+
+  const querySnapshot = await getDocs(q);
+  const maxSlideMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, length} = docSnapshot.data();
+    acc[title.toLowerCase()] =  (length);
+    return acc;
+  }, {});
+  return maxSlideMap;
 };
 
 export const createUserDocumentFromAuth = async (

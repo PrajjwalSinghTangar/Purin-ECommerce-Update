@@ -1,8 +1,9 @@
 import { CaretLeftOutlined, CaretRightOutlined } from "@ant-design/icons";
-import { useState } from "react";
+import { useState,useContext,Fragment } from "react";
 import styled from "styled-components";
-import { sliderItems } from "../data";
 import { mobile,tablet } from "../responsive";
+import {useNavigate} from 'react-router-dom';
+import { ProductsContext } from "../contexts/products.context";
 
 const Container = styled.div`
     width:100%;
@@ -93,65 +94,59 @@ const Button = styled.button`
 `;
 
 const Slider = () => {
+    const {slider,maxSlide}= useContext(ProductsContext);
 
     const [slideIndex,setSlideIndex] = useState(0);
+
     const handleClick = (direction) => {
 
         if(direction === "left"){
             setSlideIndex(slideIndex > 0 ? slideIndex -1 : 2)
         }   else    {
-            setSlideIndex(slideIndex < 2  ? slideIndex +1 : 0)
+            setSlideIndex(slideIndex < maxSlide.slide  ? slideIndex +1 : 0)
         }
 
     };
+    
+    const navigate = useNavigate();
+    
 
     return(
-        <Container>
-            <Arrow direction="left" onClick={()=>handleClick("left")}>
-                <CaretLeftOutlined />
-            </Arrow>
-            <Wrapper slideIndex={slideIndex}>
-                {sliderItems.map((items) => (
-                    <Slide bg={items.bg} key={items.id}>
-                        <ImgContainer>
-                            <Image src={`${items.img}`}/>
-                        </ImgContainer>
-                        <InfoContainer>
-                        <Title>{items.title}</Title>
-                            <Desc>{items.desc}</Desc>
-                            <Button>SHOP NOW</Button>
-                        </InfoContainer>
-                    </Slide>
-                ))}
-                {sliderItems.map((items) => (
-                    <Slide bg={items.bg} key={items.id}>
-                    <ImgContainer>
-                        <Image src={items.img}/>
-                    </ImgContainer>
-                    <InfoContainer>
-                    <Title>W{items.title}</Title>
-                        <Desc>{items.desc}</Desc>
-                        <Button>SHOP NOW</Button>
-                    </InfoContainer>
-                </Slide>
-                ))}
-                {sliderItems.map((items) => (
-                    <Slide bg={items.bg} key={items.id}>
-                    <ImgContainer>
-                        <Image src={items.img}/>
-                    </ImgContainer>
-                    <InfoContainer>
-                    <Title>{items.title}</Title>
-                        <Desc>{items.desc}</Desc>
-                        <Button>SHOP NOW</Button>
-                    </InfoContainer>
-                </Slide>
-                ))}
-            </Wrapper>
-            <Arrow direction="right" onClick={()=>handleClick("right")}>
-                <CaretRightOutlined />
-            </Arrow>
-        </Container>
+        <Fragment>
+            <Container>
+                <Arrow direction="left" onClick={()=>handleClick("left")}>
+                    <CaretLeftOutlined />
+                </Arrow>
+                <Wrapper slideIndex={slideIndex}>{
+                    Object.keys(slider).map(item=> {
+                        return <Fragment key={item}>
+                            {slider[item].map((items) => {
+                                return <Slide bg={items.bg} key={items.id}>
+                                    <ImgContainer>
+                                        <Image src={`${items.img}`}/>
+                                    </ImgContainer>
+                                    <InfoContainer>
+                                    <Title>{items.name}</Title>
+                                        <Desc>{items.desc}</Desc>
+                                        <Button onClick={(e)=>navigate('/product',{
+                                            state: {
+                                                id: items.id,
+                                                img : items.img, 
+                                                name :items.name,
+                                                price : items.price
+                                            }})}>SHOP NOW</Button>
+                                    </InfoContainer>
+                                </Slide>
+                            })}
+                        </Fragment>
+                    })
+                }
+                </Wrapper>
+                <Arrow direction="right" onClick={()=>handleClick("right")}>
+                    <CaretRightOutlined />
+                </Arrow>
+            </Container>
+        </Fragment>
     )
 }
 

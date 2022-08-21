@@ -1,8 +1,6 @@
+import { Fragment } from "react";
 import styled from "styled-components";
 import HomePageProduct from "./HomePageProduct";
-import { ProductsContext } from "../contexts/products.context";
-import { useContext } from "react";
-
 const Container = styled.div`
     padding: 20px;
     display: flex;
@@ -12,16 +10,16 @@ const Container = styled.div`
     
 `;
 
-const Products = () => {
-    const {products} = useContext(ProductsContext);
+const Products = ({products}) => {
     return(
-        <Container>
-            
-            {products.popularProducts.map((item) => (
-                <HomePageProduct img={item} key={item.id} title={item.title} route={item.route}/>
-            ))}
-            
-        </Container>
+        <Fragment>
+            <Container>
+                {products.map((item) => (
+                    <HomePageProduct img={item} key={item.id} title={item.title} route={item.route}/>
+                ))}
+                
+            </Container>
+        </Fragment>
     )
 }
 

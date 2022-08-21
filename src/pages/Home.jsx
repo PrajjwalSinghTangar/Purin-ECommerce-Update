@@ -6,6 +6,7 @@ import Products from "../components/Products.jsx";
 import Newsletter from "../components/Newsletter.jsx";
 import Footer from "../components/Footer.jsx";
 import styled from "styled-components";
+import { popularProducts } from "../data.js";
 
 const Title = styled.h1`
     text-align:center;
@@ -19,7 +20,7 @@ const Home = () => {
             <Slider/>
             <Catergories/>
             <Title>What's Your Need?</Title>
-            <Products/>
+            <Products products={popularProducts}/>
             <Newsletter/>
             <Footer/>
         </div>

@@ -1,49 +1,55 @@
 export const sliderItems = [
     {
-      id: 1,
+      id: 'Slider 1',
       img: "https://i.postimg.cc/L4fvjSCL/Slider-Image1.png",
-      title: "SUMMER SHOWOFF",
+      name: "SUMMER SHOWOFF",
       desc: "CAN'T WAIT? THEN DON'T WAIT! GET FLAT 20% OFF FOR NEW ARRIVALS.",
       bg: "f5fafd",
+      price: 249
     },
     {
-      id: 2,
+      id: 'Slider 2',
       img: "https://i.postimg.cc/rFJrXyF1/Slider-Image2.png",
-      title: "AUTUMN MANIA",
+      name: "AUTUMN MANIA",
       desc: "STOP SLIDING AND CLICK BELOW! GET FLAT 20% OFF FOR NEW ARRIVALS.",
       bg: "fcf1ed",
+      price: 249
     },
     {
-      id: 3,
+      id: 'Slider 3',
       img: "https://i.postimg.cc/t4vnJr67/Slider-Image3.png",
-      title: "LONGWEAR LOVERS",
+      name: "LONGWEAR LOVERS",
       desc: "YOU SHOPOHOLIC! CLICK BELOW & GET FLAT 30% OFF FOR NEW ARRIVALS.",
       bg: "fbf0f4",
+      price: 249
     },
   ];
 
-  export const categories = [
+export const categories = [
     {
       id: 1,
       img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       title: "SHIRT STYLE!",
-      border: "0px 150px 0px 555px"
+      border: "0px 150px 0px 555px",
+      route:'/shirts'
     },
     {
       id: 2,
       img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       title: "GOT A HAT LOVE ?",
-      border: "150px 150px 0px 0px"
+      border: "150px 150px 0px 0px",
+      route:'/hats'
     },
     {
       id: 3,
       img: "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       title: "DREAMING JACKETS?",
-      border: "150px 0px 555px 0px"
+      border: "150px 0px 555px 0px",
+      route:'/jackets'
     },
   ];
 
-  export const popularProducts = [
+export const popularProducts = [
     {
       id:1,
       title:'Hats',
@@ -73,200 +79,5 @@ export const sliderItems = [
       title:'Shoes',
       img:"https://i.postimg.cc/V65KJBnM/03-tesla-white.jpg",
       route:"/shoes"
-    }
-  ];
-
-  export const hats = [
-    {
-      id:1,
-      name:"BaseBall Hat",
-      img:"https://i.postimg.cc/HnjB7sgx/01-baseball-hat-black.jpg",
-      price:18
-    },
-    {
-      id:2,
-      name:"Straw Hat",
-      img:"https://i.postimg.cc/8zdBcr64/02-women-straw-hat-beige.jpg",
-      price:25
-    },
-    {
-      id:3,
-      name:"Fedora",
-      img:"https://i.postimg.cc/KcdHgB1h/03-fedora-black.jpg",
-      price:16
-    },
-    {
-      id:4,
-      name:"Floral",
-      img:"https://i.postimg.cc/VNLGcFVn/04-flower-blue.jpg",
-      price:9
-    },
-    {
-      id:5,
-      name:"Butterfly",
-      img:"https://i.postimg.cc/Z5NscRyv/05-butterfly-blue.jpg",
-      price:21
-    },
-    {
-      id:6,
-      name:"Beach",
-      img:"https://i.postimg.cc/SxbfmGJj/06-beach-beige.jpg",
-      price:29
-    }
-  ];
-
-  export const jackets = [
-    {
-      id:7,
-      name:"Warm Jacket",
-      img:"https://i.postimg.cc/tCqVkmZ3/01-warm-jacket-mustard.jpg",
-      price:46
-    },
-    {
-      id:8,
-      name:"Bomber",
-      img:"https://i.postimg.cc/fLsbLJYc/02-bomber-black.jpg",
-      price:59
-    },
-    {
-      id:9,
-      name:"Rider",
-      img:"https://i.postimg.cc/259Dpy2j/03-rider-black.jpg",
-      price:79
-    },
-    {
-      id:10,
-      name:"Demin",
-      img:"https://i.postimg.cc/YqLB5tWM/04-demin-blue.jpg",
-      price:89
-    },
-    {
-      id:11,
-      name:"Varsity",
-      img:"https://i.postimg.cc/FHmm32Yv/05-varsity-black.jpg",
-      price:29
-    },
-    {
-      id:12,
-      name:"Symbiote",
-      img:"https://i.postimg.cc/FFjjDLP4/06-symbiote-neon.jpg",
-      price:69
-    }
-  ];
-
-  export const shirts = [
-    {
-      id:13,
-      name:"Dennis",
-      img:"https://i.postimg.cc/0QJ2c7P1/01-dennis-black.jpg",
-      price:19
-    },
-    {
-      id:14,
-      name:"Casual",
-      img:"https://i.postimg.cc/tgsX4F1n/02-casual-black.jpg",
-      price:21
-    },
-    {
-      id:15,
-      name:"Slim",
-      img:"https://i.postimg.cc/L5pRD7xj/03-slim-fit-blue.jpg",
-      price:45
-    },
-    {
-      id:16,
-      name:"Checkered",
-      img:"https://i.postimg.cc/Hx1f1Mbg/04-checkered-blue.jpg",
-      price:56
-    },
-    {
-      id:17,
-      name:"Cotton Blend",
-      img:"https://i.postimg.cc/W3SJcMxF/05-cotton-blend-white.jpg",
-      price:25
-    },
-    {
-      id:18,
-      name:"Beach",
-      img:"https://i.postimg.cc/LX4nDJhH/06-beach-green-purple.jpg",
-      price:65
-    }
-  ];
-
-  export const jeans = [
-    {
-      id:19,
-      name:"Levi",
-      img:"https://i.postimg.cc/QxYkTr49/01-levi-trackpants.jpg",
-      price:56
-    },
-    {
-      id:20,
-      name:"Van Heusen",
-      img:"https://i.postimg.cc/Vk3qKWcz/02-vanheusen-jeans.jpg",
-      price:23
-    },
-    {
-      id:21,
-      name:"Martin",
-      img:"https://i.postimg.cc/xCQK2jC7/03-martin-jeans.jpg",
-      price:44
-    },
-    {
-      id:22,
-      name:"Blend You",
-      img:"https://i.postimg.cc/9MByF3wf/04-blend-light-blue.jpg",
-      price:66
-    },
-    {
-      id:23,
-      name:"Aka Chic",
-      img:"https://i.postimg.cc/nrR7Bvkb/05-aka-chic-navy.jpg",
-      price:96
-    },
-    {
-      id:24,
-      name:"Ben",
-      img:"https://i.postimg.cc/nr0KT8nW/06-ben-white.jpg",
-      price:54
-    }
-  ];
-
-  export const shoes = [
-    {
-      id:25,
-      name:"Puma",
-      img:"https://i.postimg.cc/1tYwNGMx/01-puma-black.jpg",
-      price:88
-    },
-    {
-      id:26,
-      name:"Off Running",
-      img:"https://i.postimg.cc/wBwWxbyg/02-running-black.jpg",
-      price:67
-    },
-    {
-      id:27,
-      name:"Tesla",
-      img:"https://i.postimg.cc/vZLqkmG1/03-tesla-blue.jpg",
-      price:25
-    },
-    {
-      id:28,
-      name:"Campus",
-      img:"https://i.postimg.cc/xC7tMJ3Z/04-campus-black.jpg",
-      price:78
-    },
-    {
-      id:29,
-      name:"Asian",
-      img:"https://i.postimg.cc/6qmctsFv/05-asian-white.jpg",
-      price:66
-    },
-    {
-      id:30,
-      name:"Nova",
-      img:"https://i.postimg.cc/JhLq15YP/06-nova-green.jpg",
-      price:45
     }
   ];
